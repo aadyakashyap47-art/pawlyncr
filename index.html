@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawly — Trusted Care, Right Around the Corner</title>
+  
+  <!-- Fonts: Plus Jakarta Sans for a modern, friendly consumer startup feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. BRAND VARIABLES & RESET
+       ========================================================================== */
+    :root {
+      --primary-green: #00BF63;
+      --pawly-cream: #FFF2C0;
+      --deep-green: #569308;
+      --white: #FFFFFF;
+      --text-dark: #1E2922;
+      --text-muted: #4A5D50;
+      --border-light: rgba(86, 147, 8, 0.15);
+      --shadow-sm: 0 4px 12px rgba(86, 147, 8, 0.05);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 20px 40px rgba(86, 147, 8, 0.1);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================================================
+       2. TYPOGRAPHY & UTILITIES
+       ========================================================================== */
+    h1, h2, h3, h4 {
+      color: var(--deep-green);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--text-muted);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .text-highlight {
+      color: var(--primary-green);
+      position: relative;
+      display: inline-block;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--pawly-cream);
+      border: 1px solid var(--border-light);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--deep-green);
+    }
+
+    /* ==========================================================================
+       3. BUTTONS & INTERACTIVE ELEMENTS
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-green);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--deep-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 191, 99, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border-color: var(--deep-green);
+      color: var(--deep-green);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary-green);
+      border-color: var(--primary-green);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       4. HEADER & NAVBAR
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--deep-green);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--primary-green);
+    }
+
+    .logo-tagline {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--deep-green);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+      opacity: 0.85;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-green);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       5. HERO SECTION
+       ========================================================================== */
+    .hero {
+      background-color: var(--pawly-cream);
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .hero-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin-bottom: 24px;
+    }
+
+    .hero-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-light);
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .hero-form input:focus {
+      border-color: var(--primary-green);
+      background: var(--white);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(86, 147, 8, 0.15);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--deep-green);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       6. TRUST SCORE CARD (MOCKUP)
+       ========================================================================== */
+    .hero-card-wrapper {
+      position: relative;
+    }
+
+    .profile-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .card-verified-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--primary-green);
+      color: var(--white);
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .caregiver-profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .caregiver-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background-color: var(--pawly-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--deep-green);
+      border: 3px solid var(--primary-green);
+    }
+
+    .caregiver-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 2px;
+    }
+
+    .caregiver-locality {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .trust-score-box {
+      background: var(--pawly-cream);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-light);
+    }
+
+    .trust-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .trust-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--deep-green);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .trust-score-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-green);
+      line-height: 1;
+    }
+
+    .trust-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: center;
+    }
+
+    .metric {
+      background: var(--white);
+      padding: 10px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .metric-val {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--deep-green);
+    }
+
+    .metric-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .card-disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* ==========================================================================
+       7. PAIN POINT / PROBLEM SECTION
+       ========================================================================== */
+    .problem-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 60px;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .problem-card {
+      background: #FAFAFA;
+      border-radius: var(--radius-md);
+      padding: 32px;
+      border: 1px solid #EFEFEF;
+      transition: var(--transition);
+    }
+
+    .problem-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-light);
+    }
+
+    .problem-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--pawly-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--deep-green);
+      font-weight: 700;
+    }
+
+    .problem-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    /* ==========================================================================
+       8. HOW PAWLY WORKS (INTERACTIVE TOGGLE)
+       ========================================================================== */
+    .how-it-works {
+      padding: 100px 0;
+      background: var(--pawly-cream);
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .toggle-btn-group {
+      background: var(--white);
+      padding: 6px;
+      border-radius: 100px;
+      display: flex;
+      gap: 4px;
+      border: 1px solid var(--border-light);
+    }
+
+    .toggle-tab {
+      padding: 10px 28px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .toggle-tab.active {
+      background: var(--primary-green);
+      color: var(--white);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .step-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      position: relative;
+      border: 1px solid var(--border-light);
+    }
+
+    .step-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-green);
+      opacity: 0.3;
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      line-height: 1;
+    }
+
+    .step-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    /* ==========================================================================
+       9. TRUST & SAFETY SECTION
+       ========================================================================== */
+    .trust-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .trust-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .feature-box {
+      display: flex;
+      gap: 20px;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: #FAFAF7;
+      border: 1px solid var(--border-light);
+    }
+
+    .feature-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--primary-green);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .feature-content h4 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    /* ==========================================================================
+       10. FINAL CTA SECTION
+       ========================================================================== */
+    .final-cta {
+      padding: 100px 0;
+      background: var(--deep-green);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta h2 {
+      color: var(--white);
+      font-size: 2.8rem;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .final-cta p {
+      color: var(--pawly-cream);
+      font-size: 1.2rem;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-form-wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cta-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .cta-form .btn-primary {
+      background: var(--primary-green);
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .cta-form .btn-primary:hover {
+      background: #00A354;
+    }
+
+    .form-note {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* ==========================================================================
+       11. FOOTER
+       ========================================================================== */
+    footer {
+      background: #142118;
+      color: var(--white);
+      padding: 60px 0 30px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo-text {
+      color: var(--white);
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 12px;
+      max-width: 280px;
+    }
+
+    .footer-column h5 {
+      color: var(--pawly-cream);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       12. MODALS & POPUPS
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--pawly-cream);
+      color: var(--primary-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+
+    .modal-box h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .modal-box p {
+      margin-bottom: 24px;
+    }
+
+    /* ==========================================================================
+       13. RESPONSIVE DESIGN
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .hero-content p { margin: 0 auto 36px; }
+      .hero-form { margin: 0 auto 24px; }
+      .hero-stats { justify-content: center; }
+      .problem-grid, .steps-grid, .trust-features {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-form, .cta-form { flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo-container">
+          <div class="logo-text">pawly<span>.</span></div>
+          <div class="logo-tagline">trusted care, right around the corner</div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#problem">Why Pawly</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#trust">Safety & Trust</a></li>
+          <li><a href="#caregivers">Become a Caregiver</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#waitlist" class="btn btn-secondary">Join Waitlist</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="badge" style="margin-bottom: 16px;">
+            📍 Hyperlocal Pet Care in India
+          </div>
+          <h1>Who takes care of <span class="text-highlight">your pet</span> when you <span class="text-highlight">can’t</span>?</h1>
+          <p>Connect with verified, trusted pet lovers in your immediate neighborhood for short visits, walks, and day care when work or life gets busy.</p>
+          
+          <form class="hero-form" onsubmit="handleWaitlistSubmit(event)">
+            <input type="email" placeholder="Enter your email address" required />
+            <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+          </form>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Verified Neighbors</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">&lt; 15 Mins</span>
+              <span class="stat-label">Average Distance</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support & Updates</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO TRUST SCORE CARD MOCKUP -->
+        <div class="hero-card-wrapper">
+          <div class="profile-card">
+            <div class="card-verified-badge">✓ Pawly Verified</div>
+            <div class="caregiver-profile">
+              <div class="caregiver-avatar">AR</div>
+              <div class="caregiver-info">
+                <h3>Ananya R.</h3>
+                <div class="caregiver-locality">📍 Indiranagar, Bengaluru (400m away)</div>
+              </div>
+            </div>
+
+            <div class="trust-score-box">
+              <div class="trust-header">
+                <span class="trust-title">Pawly Trust Score</span>
+                <span class="trust-score-value">94<small style="font-size: 1rem; color: var(--text-muted);">/100</small></span>
+              </div>
+              <p style="font-size: 0.8rem; margin-bottom: 12px; color: var(--text-muted);">ID Verified • Background Checked • Community Recommended</p>
+            </div>
+
+            <div class="trust-metrics">
+              <div class="metric">
+                <div class="metric-val">3+ Yrs</div>
+                <div class="metric-lbl">Experience</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">★ 4.95</div>
+                <div class="metric-lbl">48 Reviews</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val" style="color: var(--primary-green);">Available</div>
+                <div class="metric-lbl">Status Today</div>
+              </div>
+            </div>
+
+            <p class="card-disclaimer">Note: Profile metrics and reviews displayed represent sample/illustrative UI data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / PAIN POINT SECTION -->
+  <section class="problem-section" id="problem">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">The Problem</div>
+        <h2>Pet parenting shouldn't mean constantly worrying</h2>
+        <p>Urban pet parents face a continuous dilemma when work trips, long office hours, or emergencies pop up.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">❌</div>
+          <h3>Boarding is Stressful</h3>
+          <p>Traditional kennels can be overwhelming and unfamiliar for pets used to home environments and personal routines.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">💬</div>
+          <h3>Fragmented Referral Groups</h3>
+          <p>Relying on random WhatsApp groups or asking busy friends leads to last-minute panic and inconsistent care quality.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🚗</div>
+          <h3>Far-away Services</h3>
+          <p>Professional agencies often dispatch sitters from across the city, leading to delays and high travel surcharges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (INTERACTIVE TOGGLE) -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Simple & Seamless</div>
+        <h2>How Pawly Works</h2>
+        <p>Built for trust, proximity, and instant peace of mind.</p>
+      </div>
+
+      <div class="toggle-container">
+        <div class="toggle-btn-group">
+          <button class="toggle-tab active" onclick="switchTab('parents')">For Pet Parents</button>
+          <button class="toggle-tab" onclick="switchTab('sitters')">For Local Caregivers</button>
+        </div>
+      </div>
+
+      <!-- Steps for Pet Parents -->
+      <div id="steps-parents" class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Post Your Need</h3>
+          <p>Specify the dates, times, and specific care your pet requires (walking, home visits, or day sitting).</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Match Nearby</h3>
+          <p>Browse verified neighbors close to your society or street based on Trust Scores, availability, and reviews.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Updates & Peace</h3>
+          <p>Receive real-time photo updates, walk maps, and check-ins while you are away from home.</p>
+        </div>
+      </div>
+
+      <!-- Steps for Caregivers (Hidden by default) -->
+      <div id="steps-sitters" class="steps-grid" style="display: none;">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Create Profile</h3>
+          <p>Complete our verification check, showcase your pet experience, and set your local availability.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Accept Requests</h3>
+          <p>Receive care requests from pet parents living right around the corner in your locality.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Earn & Connect</h3>
+          <p>Earn flexible income doing what you love while helping fellow pet lovers in your community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST & SAFETY SECTION -->
+  <section class="trust-section" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Neighborhood First</div>
+        <h2>Built on absolute trust and security</h2>
+        <p>We know your pet is family. Pawly layers safety into every single match.</p>
+      </div>
+
+      <div class="trust-features">
+        <div class="feature-box">
+          <div class="feature-icon-circle">✓</div>
+          <div class="feature-content">
+            <h4>Multi-Step Verification</h4>
+            <p>Every caregiver undergoes mandatory Govt-ID verification, address validation, and reference checks.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon-circle">📊</div>
+          <div class="feature-content">
+            <h4>Pawly Trust Score</h4>
+            <p>Our proprietary scoring system rates caregivers on experience, punctuality, background checks, and neighbor reviews.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon-circle">📍</div>
+          <div class="feature-content">
+            <h4>Hyperlocal Proximity</h4>
+            <p>Caregivers live within walking distance, making emergency visits fast and eliminating long commutes.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon-circle">🛡️</div>
+          <div class="feature-content">
+            <h4>Care Support Guard</h4>
+            <p>Dedicated customer support and emergency protocols during active bookings for total reassurance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CALL TO ACTION -->
+  <section class="final-cta" id="waitlist">
+    <div class="container">
+      <h2>Your pet shouldn't have to be the reason you say no.</h2>
+      <p>Be among the first pet parents in your city to access verified neighborhood pet care when we launch.</p>
+      
+      <div class="cta-form-wrapper">
+        <form class="cta-form" onsubmit="handleWaitlistSubmit(event)">
+          <input type="email" placeholder="Enter your email address" required />
+          <button type="submit" class="btn btn-primary">Join the Pawly Waitlist</button>
+        </form>
+        <span class="form-note">🔒 Early access members get priority matching and launch discounts. No spam.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text">pawly<span style="color:var(--primary-green)">.</span></div>
+          <p>Connecting pet parents with verified, trusted caregivers right around the corner across urban India.</p>
+        </div>
+        <div class="footer-column">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="#problem">Why Pawly</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#trust">Pawly Trust Score</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#caregivers" onclick="openModal('Caregiver Onboarding', 'Caregiver applications will open soon in select areas of Bengaluru, Mumbai, and NCR.')">Become a Sitter</a></li>
+            <li><a href="#" onclick="openModal('Neighborhood Hubs', 'We are building local community circles for pet owners.')">Local Hubs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#" onclick="openModal('About Us', 'Pawly is an early-stage Indian pet-care startup building neighborhood trust networks.')">About Startup</a></li>
+            <li><a href="#" onclick="openModal('Contact', 'Get in touch with our founder team at hello@pawly.in')">Contact Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Pawly Technologies Pvt. Ltd. All rights reserved.</div>
+        <div>Built for urban pet parents in India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h3 id="modalTitle">Welcome to Pawly</h3>
+      <p id="modalMessage">Thank you for joining our waitlist! We will reach out as soon as we launch in your neighborhood.</p>
+      <button class="btn btn-primary" style="width: 100%;" onclick="closeModalDirect()">Got it!</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT FOR INTERACTIVITY -->
+  <script>
+    // Tab switching logic for "How It Works"
+    function switchTab(type) {
+      const tabs = document.querySelectorAll('.toggle-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      const parentSteps = document.getElementById('steps-parents');
+      const sitterSteps = document.getElementById('steps-sitters');
+
+      if (type === 'parents') {
+        tabs[0].classList.add('active');
+        parentSteps.style.display = 'grid';
+        sitterSteps.style.display = 'none';
+      } else {
+        tabs[1].classList.add('active');
+        parentSteps.style.display = 'none';
+        sitterSteps.style.display = 'grid';
+      }
+    }
+
+    // Handle Waitlist Form Submission
+    function handleWaitlistSubmit(event) {
+      event.preventDefault();
+      const input = event.target.querySelector('input');
+      if (input && input.value) {
+        openModal(
+          'You\'re on the list!',
+          `Thanks for joining, ${input.value}! You are officially locked in for early access and launch perks.`
+        );
+        input.value = '';
+      }
+    }
+
+    // Modal Control Functions
+    function openModal(title, message) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalMessage').innerText = message;
+      document.getElementById('modalOverlay').classList.add('active');
+    }
+
+    function closeModal(event) {
+      if (event.target.id === 'modalOverlay') {
+        document.getElementById('modalOverlay').classList.remove('active');
+      }
+    }
+
+    function closeModalDirect() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
